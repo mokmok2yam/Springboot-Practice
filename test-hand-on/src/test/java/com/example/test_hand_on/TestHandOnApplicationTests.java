@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
 class TestHandOnApplicationTests {
-	MemberRepository repository = new MemoryMemberRepository();
+	MemoryMemberRepository repository = new MemoryMemberRepository();
 
 	@AfterEach
 	public void clear(){
@@ -34,7 +34,7 @@ class TestHandOnApplicationTests {
 		Member member = new Member();
 		member.setName("spring1");
 		repository.save(member);
-		Member result=repository.findByname("spring1").get();
+		Member result=repository.findByName("spring1").get();
 		assertThat(result).isEqualTo(member);
 	}
 	@Test
