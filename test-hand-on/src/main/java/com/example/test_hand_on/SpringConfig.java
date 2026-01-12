@@ -1,8 +1,7 @@
 package com.example.test_hand_on;
 
-import com.example.test_hand_on.repository.JdbcMemberRepository;
+import com.example.test_hand_on.repository.JdbcTemplateMemberRepository;
 import com.example.test_hand_on.repository.MemberRepository;
-import com.example.test_hand_on.repository.MemoryMemberRepository;
 import com.example.test_hand_on.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +23,7 @@ public class SpringConfig {
     }
     @Bean
     MemberRepository memberRepository(){
-        return new JdbcMemberRepository(dataSource);// 실제 데이터베이스와 연결하기 위해 DataSource가 필요하므로 생성자에 넣어줍니다.
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 
 }
