@@ -1,8 +1,10 @@
 package com.example.test_hand_on;
 
 import com.example.test_hand_on.repository.JdbcTemplateMemberRepository;
+import com.example.test_hand_on.repository.JpaMemberRepository;
 import com.example.test_hand_on.repository.MemberRepository;
 import com.example.test_hand_on.service.MemberService;
+import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,10 +13,11 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
-    public final DataSource dataSource;
+   // public final DataSource dataSource;
+    public final EntityManager em;
     @Autowired
-    public SpringConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
+    public SpringConfig(EntityManager em) {
+        this.em = em;
     }
 
     @Bean//이메서드가 반환하는 객체는 빈으로 등록해!
@@ -23,7 +26,7 @@ public class SpringConfig {
     }
     @Bean
     MemberRepository memberRepository(){
-        return new JdbcTemplateMemberRepository(dataSource);
+        return new JpaMemberRepository(em);
     }
 
 }

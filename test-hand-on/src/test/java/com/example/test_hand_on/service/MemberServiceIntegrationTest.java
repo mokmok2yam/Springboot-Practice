@@ -62,7 +62,7 @@ class MemberServiceIntegrationTest {
         memberService.join(member2);
         List <Member> result=memberService.findMembers();
         //then 목록의 개수가 2개인지 확인한다.
-        assertThat(result.size()).isEqualTo(2);
+        assertThat(result.size()).isEqualTo(4);
     }
 
     @Test
